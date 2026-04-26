@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IHH Healthcare · M365 Copilot Immersion · 29 Apr 2026</title>
+<style>
+:root{
+  --bg:#0b1020;--panel:#121a33;--panel2:#172244;--ink:#e8ecf7;
+  --muted:#a4adcb;--accent:#0064C8;--accent2:#22d3ee;--good:#22c55e;
+  --warn:#f59e0b;--danger:#ef4444;--border:#26315a;--code:#0a0f24;
+  --ihh:#003087;--shadow:0 8px 24px rgba(0,0,0,.35);--radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,#0e1530,#0a0f24);border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand .logo{width:36px;height:36px;border-radius:9px;background:var(--ihh);display:grid;place-items:center;font-weight:900;color:#fff;font-size:12px;letter-spacing:-.5px}
+.brand h1{font-size:15px;margin:0;letter-spacing:.2px}
+.tag{font-size:11px;color:var(--muted);margin-bottom:18px}
+nav h3{font-size:10px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;margin:18px 0 8px}
+nav a{display:block;color:var(--ink);padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
+nav a:hover{background:#172244;text-decoration:none;border-color:var(--border)}
+nav a.active{background:rgba(0,100,200,.15);border-color:var(--accent);color:var(--accent2)}
+main{padding:28px 40px 80px;max-width:1080px}
+.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(0,48,135,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(0,100,200,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
+.hero .pill{display:inline-block;background:#0a0f24;border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
+.hero p{color:var(--muted);margin:0;max-width:780px}
+.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
+.meta-row span b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}
+.card .lead{color:var(--muted);margin:0 0 14px}
+.card h4{margin:18px 0 6px;font-size:15px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
+.modulehead{display:flex;align-items:center;gap:14px;margin:32px 0 12px}
+.modulehead .num{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--ihh),var(--accent));display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
+.modulehead h2{margin:0;font-size:22px}
+.modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:#0e1633}
+.activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
+.activity .time{color:var(--muted);font-size:12px}
+.activity .file{font-size:12px;color:var(--accent2);background:#0a0f24;border:1px solid var(--border);padding:3px 9px;border-radius:6px}
+.activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
+.activity p{margin:6px 0;color:var(--muted);font-size:14px}
+.task-step{background:#0a1228;border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
+.task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.task-step .tool-badge{display:inline-block;background:rgba(0,100,200,.2);border:1px solid var(--accent);color:var(--accent2);font-size:11px;padding:2px 8px;border-radius:5px;margin-left:8px;vertical-align:middle}
+.prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#dbe2ff;white-space:pre-wrap;line-height:1.6}
+.prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:var(--ink);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
+.prompt .copy:hover{background:var(--accent);color:#fff}
+.prompt .copy.copied{background:var(--good);color:#0a0f24}
+.callout{border-left:4px solid var(--accent2);background:#0e1c2c;padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
+.callout.warn{border-color:var(--warn);background:#2b220e}
+.callout.danger{border-color:var(--danger);background:#2b1414}
+.callout.good{border-color:var(--good);background:#0e2418}
+.callout b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--accent2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+td a{color:var(--ink);font-weight:600}
+td a:hover{color:var(--accent2)}
+.agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
+.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:#0e1633}
+.agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
+.agenda>div:nth-last-child(-n+3){border-bottom:0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+.tool-card{background:#0e1633;border:1px solid var(--border);border-radius:10px;padding:14px}
+.tool-card .icon{font-size:22px;margin-bottom:6px}
+.tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.agent-card{background:#0e1633;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:border-color .2s}
+.agent-card:hover,.agent-card.selected{border-color:var(--accent);background:rgba(0,100,200,.1)}
+.agent-card h5{margin:0 0 6px;font-size:15px}
+.agent-card p{margin:0;font-size:12px;color:var(--muted)}
+.steps-list{counter-reset:steps;list-style:none;padding:0;margin:12px 0}
+.steps-list li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.steps-list li::before{content:counter(steps);min-width:26px;height:26px;border-radius:50%;background:var(--ihh);color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
+.badge.blue{background:rgba(0,100,200,.2);color:var(--accent2);border:1px solid var(--accent)}
+.badge.green{background:rgba(34,197,94,.15);color:var(--good);border:1px solid var(--good)}
+.badge.yellow{background:rgba(245,158,11,.15);color:var(--warn);border:1px solid var(--warn)}
+/* Password Screen */
+#lock{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(0,48,135,.5),transparent 60%),#0b1020;z-index:9999;display:flex;align-items:center;justify-content:center}
+.lock-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lock-box .ihh-logo{width:56px;height:56px;border-radius:14px;background:var(--ihh);display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;margin:0 auto 18px}
+.lock-box h2{margin:0 0 6px;font-size:22px}
+.lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
+.lock-box input{width:100%;background:#0a0f24;border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 16px;margin-bottom:12px;outline:none;font-family:inherit;transition:border-color .2s}
+.lock-box input:focus{border-color:var(--accent)}
+.lock-box button{width:100%;background:var(--ihh);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer;transition:background .2s}
+.lock-box button:hover{background:var(--accent)}
+.lock-box .err{color:var(--danger);font-size:13px;margin-top:8px;min-height:18px}
+.lock-box .conf{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:760px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto}
+  main{padding:16px 18px 60px}
+  .hero h2{font-size:22px}
+  .agent-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lock">
+  <div class="lock-box">
+    <div class="ihh-logo">IHH</div>
+    <h2>IHH · Copilot Immersion</h2>
+    <p>29 April 2026 · M365 Copilot Executive Workshop<br>Enter the session password to continue.</p>
+    <input type="password" id="pw" placeholder="Session password" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()"/>
+    <button onclick="unlock()">Enter Workshop →</button>
+    <div class="err" id="err"></div>
+    <div class="conf">Confidential · IHH Healthcare Berhad · Internal use only</div>
+  </div>
+</div>
+
+<div class="layout" id="main" style="display:none">
+<!-- SIDEBAR -->
+<aside>
+  <div class="brand">
+    <div class="logo">IHH</div>
+    <h1>M365 Copilot<br>Workshop</h1>
+  </div>
+  <div class="tag">29 April 2026 · Executive Immersion</div>
+  <nav>
+    <h3>Overview</h3>
+    <a href="#overview">About this session</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#tools">Tools used today</a>
+    <h3>Exercises</h3>
+    <a href="#ex1">Exercise 1 · Researcher</a>
+    <a href="#ex2">Exercise 2 · ESG Analytics</a>
+    <a href="#ex3">Exercise 3 · Agent Builder</a>
+    <h3>Resources</h3>
+    <a href="#files">Sample files</a>
+    <a href="#tips">Tips &amp; prompts</a>
+    <a href="#fabric">Fabric Agent preview</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- HERO -->
+<section id="overview">
+<div class="hero">
+  <div class="pill">INTERNAL · CONFIDENTIAL</div>
+  <h2>IHH Healthcare · M365 Copilot Executive Workshop</h2>
+  <p>A hands-on immersion experience for Finance, Investment, Operations, Sustainability, Corporate Communications, Performance Management and Innovation leaders across IHH Healthcare.</p>
+  <div class="meta-row">
+    <span><b>Date</b> 29 April 2026</span>
+    <span><b>Duration</b> 2.5–3 hours (incl. hands-on)</span>
+    <span><b>Format</b> Demo + Guided hands-on</span>
+    <span><b>Tool</b> Microsoft 365 Copilot</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>About this workshop</h3>
+  <p class="lead">A practical, executive-level immersion designed specifically for IHH Healthcare. We move from strategic context → live demos → hands-on exercises, ending with a preview of the Fabric Data Agent for cross-hospital analytics.</p>
+  <h4>What you will leave with</h4>
+  <ul>
+    <li>Experience using Researcher (Critique + Model Council) for multi-model market intelligence</li>
+    <li>A working ESG dashboard built with Copilot in Excel, and a draft CR report section in Word</li>
+    <li>Your own custom AI agent — Brand Governance, Finance Policy Advisor, or Sustainability Guide</li>
+    <li>A clear mental model of what Copilot can do across your function — and what it cannot</li>
+    <li>An understanding of what the Fabric Data Agent enables for cross-hospital analytics</li>
+  </ul>
+  <h4>What this workshop is not</h4>
+  <ul>
+    <li>It is <b>not</b> a feature walkthrough — every tool is demonstrated in an IHH-specific context</li>
+    <li>It is <b>not</b> about replacing clinical judgment or financial decision-making — Copilot drafts, you decide</li>
+    <li>It is <b>not</b> connected to live IHH systems today — all data used is sample/anonymised</li>
+  </ul>
+</div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda">
+<div class="modulehead"><div class="num">📋</div><h2>Agenda<small>2.5–3 hours total</small></h2></div>
+<div class="card">
+<div class="agenda">
+  <div>0:00</div><div><b>Session 1</b> — The Strategic Case for AI in Healthcare</div><div>30 min</div>
+  <div>0:30</div><div><b>Session 2</b> — Copilot Use Cases: Live Demos (Researcher, Excel, Word, Agent Builder)</div><div>50 min</div>
+  <div>1:20</div><div>☕ <b>Break</b></div><div>10 min</div>
+  <div>1:30</div><div><b>Session 3</b> — Hands-On Exercises (this page)</div><div>50 min</div>
+  <div>2:20</div><div><b>Session 4</b> — Fabric Data Agent Preview + Next Steps</div><div>30 min</div>
+  <div>2:50</div><div><b>Q&amp;A &amp; Close</b></div><div>10 min</div>
+</div>
+<div class="callout" style="margin-top:14px">
+  <b>Hands-on starts at 1:30</b> — open this page when the presenter says "Exercise time". Follow the session number on the left sidebar to know where you are.
+</div>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+<div class="modulehead"><div class="num">🛠</div><h2>Tools Used Today<small>M365 Copilot surfaces</small></h2></div>
+<div class="card">
+<div class="tools-grid">
+  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher (Critique)</h5><p>Deep research with dual-model architecture — one model generates, another reviews for accuracy. Default "Auto" mode. DRACO benchmark: +13.88% over single-model.</p></div>
+  <div class="tool-card"><div class="icon">⚖️</div><h5>Model Council</h5><p>Submit one prompt to GPT and Claude simultaneously. See responses side-by-side with a summary of where they agree, diverge, and each model's unique insights.</p></div>
+  <div class="tool-card"><div class="icon">📊</div><h5>Excel Copilot</h5><p>Natural-language data analysis, dashboard creation, trend charts, and RAG status tables — no formulas needed.</p></div>
+  <div class="tool-card"><div class="icon">📝</div><h5>Word Copilot</h5><p>Document drafting — strategic memos, CR reports, board briefings — grounded on your uploaded data files.</p></div>
+  <div class="tool-card"><div class="icon">🎨</div><h5>PowerPoint Copilot</h5><p>Presentation creation and storyline improvement — strategy decks, ESG investor updates, QBR presentations.</p></div>
+  <div class="tool-card"><div class="icon">🤖</div><h5>Agent Builder</h5><p>Build a custom AI agent in 15 minutes, grounded on your SharePoint documents. Finance Advisor, Brand Agent, or Sustainability Guide.</p></div>
+  <div class="tool-card"><div class="icon">👥</div><h5>Cowork</h5><p>Delegate multi-step tasks to Copilot. Describe the outcome — "analyse ESG data, draft email, schedule meeting" — it creates a plan and checks in before taking actions.</p></div>
+  <div class="tool-card"><div class="icon">🔗</div><h5>Fabric Data Agent</h5><p><span class="badge blue">PREVIEW</span> Cross-hospital analytics via Copilot Studio + Microsoft Fabric. Query all hospitals conversationally.</p></div>
+</div>
+<div class="callout warn" style="margin-top:16px">
+  <b>Data privacy reminder:</b> Do not paste real patient data, employee identifiable information, or commercially sensitive IHH data into Copilot during this session. Use the sample files provided. IHH's M365 Copilot deployment is PDPA-compliant — your prompts and data stay within the Microsoft 365 tenant and are not used to train AI models.
+</div>
+</div>
+</section>
+
+<!-- ──────────────────────────────────────────────────── -->
+<!-- EXERCISE 1 -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="ex1">
+<div class="modulehead"><div class="num">1</div><h2>Exercise 1 · Strategic Intelligence<small>15 min · Researcher + Model Council</small></h2></div>
+<div class="callout good"><b>When to do this:</b> Session 3 starts at 1:30. Exercise 1 runs 1:30–1:45. Open M365 Copilot at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> and click <b>Researcher</b>.</div>
+
+<div class="card">
+<p class="lead">Use Researcher's Critique mode (dual-model: generate + review) for deep competitive intelligence on Malaysia's private healthcare market, then use Model Council to see GPT vs Claude side-by-side.</p>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 1.1</span><span class="time">5 min</span><span class="file">🔍 Researcher · Critique mode</span></div>
+  <h4>Research Malaysia private healthcare market</h4>
+  <p>In M365 Copilot, open <b>Researcher</b>. Keep the model selector on <b>Auto</b> — this activates Critique mode (dual-model: one generates, one reviews sources and evidence grounding). Use this prompt:</p>
+  <div class="prompt">Research Malaysia private healthcare market: analyse IHH Healthcare, Columbia Asia, KPJ Healthcare, Sunway Medical. Compare market share, bed capacity, strategic focus, recent M&A activity, digital health initiatives, and medical tourism positioning. Include growth projections for 2026–2028. Cite all sources.<button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="callout"><b>Watch for:</b> Source Reliability indicators and Evidence Grounding scores — these are the Critique model at work, validating every claim in real time.</div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 1.2</span><span class="time">5 min</span><span class="file">⚖️ Model Council</span></div>
+  <h4>Side-by-side: GPT vs Claude on strategic opportunities</h4>
+  <p>In Researcher, switch to <b>Model Council</b> in the model picker. Submit this prompt to see GPT and Claude respond simultaneously:</p>
+  <div class="prompt">What are the top 3 strategic opportunities for a private hospital group in Malaysia over the next 3 years? Consider: ageing population, medical tourism from Indonesia and the Middle East, digital health penetration, insurance market growth, and the regulatory environment. Provide specific, evidence-based recommendations.<button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="callout"><b>Read the cover letter</b> — it summarises where GPT and Claude agree, where they diverge, and what unique insight each model contributes. This is Model Council's key output.</div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 1.3</span><span class="time">5 min</span><span class="file">📝 Word Copilot</span></div>
+  <h4>Turn research into a strategic memo</h4>
+  <p>Open a new <b>Word</b> document. Use Copilot to draft a board-ready memo based on your Researcher output:</p>
+  <div class="prompt">Create a 1-page executive memo for the IHH Healthcare Strategy Committee based on the research I just completed in Researcher.
+
+Structure:
+- Market overview: Malaysia private healthcare market size, growth rate, key dynamics
+- Competitive landscape: IHH's position vs KPJ, Columbia Asia, Sunway Medical
+- 3 strategic priorities for FY2026–2027 with rationale
+- 90-day immediate actions (3 bullets)
+
+Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point not confirmed in the research. Maximum 400 words.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</section>
+
+<!-- ──────────────────────────────────────────────────── -->
+<!-- EXERCISE 2 -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="ex2">
+<div class="modulehead"><div class="num">2</div><h2>Exercise 2 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
+<div class="callout good"><b>When to do this:</b> 1:45–2:00. Download <a href="samples/IHH_Sustainability_ESG.xlsx"><b>IHH_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
+
+<div class="card">
+<p class="lead">Consolidate 12 months of ESG metrics across 6 IHH hospitals, build an executive dashboard, and draft a CR report section — all using Copilot in Excel and Word.</p>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 2.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · IHH_Sustainability_ESG.xlsx</span></div>
+  <h4>Analyse carbon emissions and identify gaps</h4>
+  <p>With the file open in Excel, open the <b>Copilot panel</b> (Home ribbon → Copilot). Run this analysis:</p>
+  <div class="prompt">Analyse the ESG data in this file. 
+1. Which hospital has the highest average carbon emissions? Show the monthly trend for all 6 hospitals.
+2. Calculate the year-over-year improvement percentage for each hospital.
+3. Compare actual March 2026 figures against the 2026 targets in the Targets_2026 tab.
+4. Flag hospitals that are NOT on track for their targets with Red status, on track with Green, and at risk with Amber.
+Show results as a summary table.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 2.2</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · Dashboard</span></div>
+  <h4>Build an executive ESG dashboard</h4>
+  <div class="prompt">Create an ESG dashboard on a new sheet called "Dashboard":
+1. A line chart: monthly carbon emissions trend (Apr 2025–Mar 2026) for all 6 hospitals, with a dashed target line for each
+2. A bar chart: recycling rate by hospital vs 2026 target — sorted by gap (largest gap first)
+3. A RAG status table: each hospital vs each KPI (Carbon, Waste, Energy, Recycling, Renewable) — Red/Amber/Green
+4. A callout box: Top 3 hospitals showing the most improvement, and the 1 hospital most at risk
+
+Format for C-suite presentation.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 2.3</span><span class="time">3 min</span><span class="file">📝 Word Copilot · CR Report</span></div>
+  <h4>Draft a CR report section</h4>
+  <p>Open a new <b>Word</b> document. Reference your ESG analysis:</p>
+  <div class="prompt">Draft a 2-page Corporate Responsibility report section for IHH Healthcare's FY2025/26 Annual Report.
+
+Structure:
+- Executive summary (3 sentences: headline achievement, key metric, forward commitment)
+- FY2025/26 Key Achievements: carbon reduction, renewable energy milestones, waste reduction — with specific numbers from the analysis
+- Sustainability Metrics Table: 6 hospitals vs 2026 targets — RAG status for each KPI
+- Top 3 Improvement Initiatives (with hospital owner and timeline)
+- FY2027 Interim Targets aligned with Net Zero 2050 pathway
+
+Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosure and investor relations. Do not invent data — use [PLACEHOLDER] for figures not in the analysis.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 2.4 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
+  <h4>Delegate the whole workflow to Cowork</h4>
+  <p><b>Cowork</b> lets you describe an outcome and Copilot orchestrates the steps — with approval checkpoints before it takes actions like sending emails or scheduling meetings.</p>
+  <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file (IHH_Sustainability_ESG.xlsx), create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="callout"><b>Note:</b> Cowork creates a plan first and asks you to approve before taking any action (sending email, scheduling meeting). You stay in control.</div>
+</div>
+</div>
+</section>
+
+<!-- ──────────────────────────────────────────────────── -->
+<!-- EXERCISE 3 -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="ex3">
+<div class="modulehead"><div class="num">3</div><h2>Exercise 3 · Build Your Agent<small>20 min · Agent Builder · Choose your use case</small></h2></div>
+<div class="callout good"><b>When to do this:</b> 2:00–2:20. Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → Create → New Agent.</div>
+
+<div class="card">
+<p class="lead">Build a custom Copilot agent grounded on IHH's documents — no coding required. Choose the use case that matches your department. All three use the same Agent Builder workflow; only the knowledge sources and test queries differ.</p>
+
+<h4>Choose your use case</h4>
+<div class="agent-grid">
+  <div class="agent-card" onclick="selectAgent(this,'a')">
+    <h5>🏷️ Brand Governance Agent</h5>
+    <p><b>Department:</b> Corporate Communications<br><br>Automated brand compliance checks — reviews press releases, social posts, and investor communications against IHH brand guidelines. Available 24/7 to anyone in the organisation.</p>
+  </div>
+  <div class="agent-card" onclick="selectAgent(this,'b')">
+    <h5>💰 Finance Policy Advisor</h5>
+    <p><b>Department:</b> Finance / Investment<br><br>Instant answers to financial policies, CAPEX approval workflows, budget guidelines, and compliance requirements. Reduces policy lookup from hours to seconds.</p>
+  </div>
+  <div class="agent-card" onclick="selectAgent(this,'c')">
+    <h5>🌱 Sustainability Guide</h5>
+    <p><b>Department:</b> Sustainability / ESG<br><br>ESG knowledge assistant — carbon targets, waste protocols, Scope 2 calculations, CR reporting requirements. Supports sustainability champions at each hospital.</p>
+  </div>
+</div>
+
+<div id="agent-steps">
+<h4>Agent Builder — step-by-step (all 3 use cases)</h4>
+
+<div class="activity">
+  <div class="head"><span class="num">Step 1</span><span class="time">2 min</span></div>
+  <h4>Open Agent Builder and create your agent</h4>
+  <p>Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Create</b> → <b>New Agent</b>. Enter a name:</p>
+  <div class="prompt" id="step1-prompt">Use Case A — Brand: "IHH Brand Governance Agent"
+Use Case B — Finance: "IHH Finance Policy Advisor"
+Use Case C — Sustainability: "IHH Sustainability Guide"<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Step 2</span><span class="time">2 min</span></div>
+  <h4>Add a description and system instructions</h4>
+  <p>Add a description, then paste these system instructions (adapt for your use case):</p>
+  <div class="prompt" id="step2-prompt">You are the IHH [Brand Governance / Finance Policy / Sustainability] Advisor. You answer questions by referencing the official IHH documents connected to your knowledge base.
+
+Rules:
+- Always cite the specific document and section you are drawing from
+- If the answer is not in your knowledge base, say so clearly — do not guess
+- For [financial approvals / brand compliance / ESG targets], always refer to the latest policy version
+- Keep answers concise and actionable — executives need clarity, not length
+- If a question requires a decision beyond what policy covers, recommend escalation to the relevant Group team<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Step 3</span><span class="time">5 min</span></div>
+  <h4>Connect knowledge sources from SharePoint</h4>
+  <p>Click <b>Add Knowledge</b> → SharePoint. Upload or connect the relevant documents for your use case. Download sample files below if needed.</p>
+  <table>
+    <tr><th>Use Case</th><th>Knowledge Sources</th><th>Download Sample</th></tr>
+    <tr>
+      <td>🏷️ Brand</td>
+      <td>IHH_Brand_Guidelines.docx, Tone of Voice Manual, Social Media Policy, Approved Messaging Library</td>
+      <td><a href="samples/IHH_Brand_Guidelines.docx">IHH_Brand_Guidelines.docx ↓</a></td>
+    </tr>
+    <tr>
+      <td>💰 Finance</td>
+      <td>IHH_Hospital_Policies.docx (Section 1: Financial Approvals), CAPEX Policy, Budget Guidelines 2026, Procurement SOP</td>
+      <td><a href="samples/IHH_Hospital_Policies.docx">IHH_Hospital_Policies.docx ↓</a></td>
+    </tr>
+    <tr>
+      <td>🌱 Sustainability</td>
+      <td>IHH_Hospital_Policies.docx (Section 3: ESG), IHH_Sustainability_ESG.xlsx (Targets_2026 tab), Carbon Reduction Roadmap, Waste Management SOP</td>
+      <td><a href="samples/IHH_Sustainability_ESG.xlsx">IHH_Sustainability_ESG.xlsx ↓</a></td>
+    </tr>
+  </table>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Step 4</span><span class="time">5 min</span></div>
+  <h4>Test your agent with 3 realistic queries</h4>
+  <p>Use these test queries — verify the agent cites the source document and section correctly:</p>
+  <table>
+    <tr><th>Use Case</th><th>Test Query 1</th><th>Test Query 2</th><th>Test Query 3</th></tr>
+    <tr>
+      <td>🏷️ Brand</td>
+      <td>"Review this press release for brand compliance"</td>
+      <td>"Is it acceptable to name a competitor in our press release?"</td>
+      <td>"What's our approved messaging on sustainability?"</td>
+    </tr>
+    <tr>
+      <td>💰 Finance</td>
+      <td>"What is the approval process for a CAPEX above RM 1 million?"</td>
+      <td>"Who approves vendor contracts over RM 500K?"</td>
+      <td>"What is the budget variance threshold that requires escalation to Group Finance?"</td>
+    </tr>
+    <tr>
+      <td>🌱 Sustainability</td>
+      <td>"What is our 2026 carbon reduction target for Gleneagles KL?"</td>
+      <td>"How do we calculate Scope 2 emissions under the IHH framework?"</td>
+      <td>"Which hospitals are furthest from their 2026 recycling targets?"</td>
+    </tr>
+  </table>
+  <div class="callout warn" style="margin-top:12px"><b>If the agent guesses rather than citing a source:</b> Refine the system instructions — add "Do not answer questions not covered in your knowledge base. If unsure, say: I don't have that in my current knowledge base — please contact [team]."</div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Step 5 · Share</span><span class="time">1 min</span></div>
+  <h4>Share with your team</h4>
+  <p>Once satisfied, click <b>Publish</b> → share the link with colleagues. They can access your agent directly from M365 Copilot without any technical setup.</p>
+  <div class="callout good">🎉 You've built a working AI agent in under 15 minutes — grounded on IHH's real documents, with citations, running 24/7.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ──────────────────────────────────────────────────── -->
+<!-- SAMPLE FILES -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="files">
+<div class="modulehead"><div class="num">📁</div><h2>Sample Files<small>Download for hands-on exercises</small></h2></div>
+<div class="card">
+<p class="lead">All files use anonymised/sample IHH data. Do not use for operational decisions. Upload to SharePoint or open directly in Microsoft 365.</p>
+<table>
+  <tr><th>#</th><th>File</th><th>Type</th><th>Used In</th><th>What It Contains</th></tr>
+  <tr><td>01</td><td><a href="samples/IHH_Market_Intelligence.xlsx">IHH_Market_Intelligence.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 1 context</td><td>Malaysia market share, 5 M&A transactions, competitor strategic focus</td></tr>
+  <tr><td>02</td><td><a href="samples/IHH_Sustainability_ESG.xlsx">IHH_Sustainability_ESG.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Exercise 2</td><td>12 months ESG metrics across 6 hospitals + 2026 targets</td></tr>
+  <tr><td>03</td><td><a href="samples/IHH_Financial_Performance.xlsx">IHH_Financial_Performance.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>12 months revenue, EBITDA, bed occupancy per hospital + budget vs actual</td></tr>
+  <tr><td>04</td><td><a href="samples/IHH_Hospital_Policies.docx">IHH_Hospital_Policies.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>Financial approval thresholds, operational KPIs, ESG commitments, comms guidelines, performance review</td></tr>
+  <tr><td>05</td><td><a href="samples/IHH_Brand_Guidelines.docx">IHH_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>Logo usage, colour palette, typography, tone of voice, approved messaging, social media guidelines</td></tr>
+  <tr><td>06</td><td><a href="samples/01-esg-metrics-data.txt">01-esg-metrics-data.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 2 reference</td><td>ESG data summary + analysis prompts in plain text (copy-paste friendly)</td></tr>
+  <tr><td>07</td><td><a href="samples/02-market-intelligence.txt">02-market-intelligence.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 1 reference</td><td>Market data summary + Researcher prompts in plain text</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ──────────────────────────────────────────────────── -->
+<!-- TIPS -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="tips">
+<div class="modulehead"><div class="num">💡</div><h2>Prompt Tips<small>For all M365 Copilot surfaces</small></h2></div>
+<div class="card">
+<h4>The GCSE framework — use for every prompt</h4>
+<div class="prompt"><b>G</b>oal — What do I want at the end? A dashboard. A 1-page memo. A list of 5 options.
+<b>C</b>ontext — Who is it for? What is the situation? What constraints apply?
+<b>S</b>ource — What data am I providing? (Reference the file, paste the data, upload the document)
+<b>E</b>xpectations — Format, length, what to include, what NOT to include.
+
+Two lines to add to every prompt:
+"Do not invent data. Use [PLACEHOLDER] for missing information."
+"List your assumptions and open questions at the end."<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<h4>Prompt library — most reusable prompts from today</h4>
+
+<div class="task-step">
+  <div class="step-label">Market Research <span class="tool-badge">Researcher · Critique</span></div>
+  <div class="prompt">Research [topic/company/market]. Compare [3-4 dimensions]. Include recent developments from [timeframe]. Cite all sources. Flag where evidence is limited or conflicting.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="task-step">
+  <div class="step-label">Data Analysis <span class="tool-badge">Excel Copilot</span></div>
+  <div class="prompt">Analyse [dataset]. Calculate [metric 1], [metric 2]. Compare [dimension A] vs [dimension B]. Identify the top 3 [best/worst performers]. Show as a [chart type] with a summary table. Flag outliers.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="task-step">
+  <div class="step-label">Executive Document <span class="tool-badge">Word Copilot</span></div>
+  <div class="prompt">Draft a [document type] for [audience]. Context: [situation]. Include: [section 1], [section 2], [section 3]. Tone: [professional/formal/concise]. Maximum [N] words. Do not invent data — use [PLACEHOLDER] for missing figures. End with: assumptions made and open questions.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="task-step">
+  <div class="step-label">Agent Test Query <span class="tool-badge">Agent Builder</span></div>
+  <div class="prompt">What is the [specific policy / target / guideline] for [specific scenario]? Please cite the section of the document where this is covered.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="task-step">
+  <div class="step-label">Delegation <span class="tool-badge">Cowork</span></div>
+  <div class="prompt">Cowork: [Describe the desired outcome in plain English]. Then [second task]. Then [third task — can include sending email or scheduling meeting, which requires my approval before executing].<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</section>
+
+<!-- FABRIC PREVIEW -->
+<section id="fabric">
+<div class="modulehead"><div class="num">🔗</div><h2>Fabric Data Agent<small>Session 4 Preview · Not hands-on today</small></h2></div>
+<div class="card">
+<div class="callout" style="margin-bottom:14px"><b>Session 4 (2:20–2:50)</b> — The presenter will walk through this. Separate step-by-step build guide provided after the session.</div>
+<h3>What the Fabric Data Agent enables</h3>
+<p class="lead">Connect Copilot Studio to Microsoft Fabric Lakehouse — enabling natural-language queries across all IHH hospitals' operational and financial data in real time.</p>
+<h4>Sample queries (cross-hospital)</h4>
+<div class="prompt">Compare bed occupancy rates across all 6 IHH Malaysia hospitals for the past 3 months. Which is performing below target?<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt">Show me EBITDA margin by hospital for Q1 FY2026. Which hospitals have a variance of more than 5% against budget?<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt">Which hospital has the highest carbon emissions per bed-day? How does this compare to the 2026 target?<button class="copy" onclick="cp(this)">Copy</button></div>
+<h4>Architecture (overview)</h4>
+<ul>
+  <li><b>Data layer:</b> Hospital operational data → Microsoft Fabric Lakehouse (unified data store)</li>
+  <li><b>Semantic layer:</b> Fabric Data Agent — defines business metrics, KPIs, and relationships</li>
+  <li><b>Interface:</b> Copilot Studio agent → M365 Copilot chat → natural-language queries</li>
+  <li><b>Result:</b> Any authorised user can ask cross-hospital questions in plain English, with answers sourced from live Fabric data</li>
+</ul>
+<div class="callout warn"><b>Build guide:</b> A full step-by-step Fabric Data Agent build guide (sample data → Fabric → Copilot Studio → agent) will be shared separately after this session.</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center">
+  IHH Healthcare Berhad · M365 Copilot Immersion · 29 April 2026 · Confidential — Internal Use Only
+</div>
+
+</main>
+</div><!-- /layout -->
+
+<script>
+// ── Password ──
+const HASH='c8d50bb3d58b59200d1b733672bf2db12601e6e896f0f4f5008219cd19b34ad9';
+async function sha256(s){const b=new TextEncoder().encode(s);const d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function unlock(){
+  const v=document.getElementById('pw').value;
+  const h=await sha256(v);
+  if(h===HASH){
+    document.getElementById('lock').style.display='none';
+    document.getElementById('main').style.display='grid';
+    sessionStorage.setItem('ihh_unlocked','1');
+  } else {
+    const e=document.getElementById('err');
+    e.textContent='Incorrect password. Please try again.';
+    setTimeout(()=>e.textContent='',3000);
+    document.getElementById('pw').value='';
+  }
+}
+if(sessionStorage.getItem('ihh_unlocked')==='1'){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('main').style.display='grid';
+}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+
+// ── Copy prompts ──
+function cp(btn){
+  const txt=btn.parentElement.textContent.replace('Copy','').replace('Copied!','').trim();
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+// ── Agent card selection ──
+function selectAgent(el,id){
+  document.querySelectorAll('.agent-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── Active nav ──
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+},{passive:true});
+</script>
+</body>
+</html>
