@@ -269,13 +269,13 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 <!-- ──────────────────────────────────────────────────── -->
 <section id="ex2">
 <div class="modulehead"><div class="num">2</div><h2>Exercise 2 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
-<div class="callout good"><b>When to do this:</b> 10:15–10:30. Download <a href="samples/Contoso_Sustainability_ESG.xlsx"><b>Contoso_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
+<div class="callout good"><b>When to do this:</b> 10:15–10:30. Download <a href="samples/02_Contoso_Sustainability_ESG.xlsx"><b>02_Contoso_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
 
 <div class="card">
 <p class="lead">Consolidate 12 months of ESG metrics across 6 IHH hospitals, build an executive dashboard, and draft a CR report section — all using Copilot in Excel and Word.</p>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 2.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · Contoso_Sustainability_ESG.xlsx</span></div>
+  <div class="head"><span class="num">Task 2.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · 02_Contoso_Sustainability_ESG.xlsx</span></div>
   <h4>Analyse carbon emissions and identify gaps</h4>
   <p>With the file open in Excel, open the <b>Copilot panel</b> (Home ribbon → Copilot). Run this analysis:</p>
   <div class="prompt">Analyse the ESG data in this file. 
@@ -318,7 +318,7 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
   <div class="head"><span class="num">Task 2.4 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
   <h4>Delegate the whole workflow to Cowork</h4>
   <p><b>Cowork</b> lets you describe an outcome and Copilot orchestrates the steps — with approval checkpoints before it takes actions like sending emails or scheduling meetings.</p>
-  <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file (Contoso_Sustainability_ESG.xlsx), create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file (02_Contoso_Sustainability_ESG.xlsx), create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
   <div class="callout"><b>Note:</b> Cowork creates a plan first and asks you to approve before taking any action (sending email, scheduling meeting). You stay in control.</div>
 </div>
 </div>
@@ -351,80 +351,34 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 </div>
 
 <div id="agent-steps">
-<h4>Agent Builder — step-by-step (all 3 use cases)</h4>
+<h4 id="agent-steps-title">Agent Builder — step-by-step · <span id="agent-label">Select a use case above ↑</span></h4>
 
 <div class="activity">
   <div class="head"><span class="num">Step 1</span><span class="time">2 min</span></div>
   <h4>Open Agent Builder and create your agent</h4>
-  <p>Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Create</b> → <b>New Agent</b>. Enter a name:</p>
-  <div class="prompt" id="step1-prompt">Use Case A — Brand: "IHH Brand Governance Agent"
-Use Case B — Finance: "IHH Finance Policy Advisor"
-Use Case C — Sustainability: "IHH Sustainability Guide"<button class="copy" onclick="cp(this)">Copy</button></div>
+  <p>Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Create</b> → <b>New Agent</b>. Enter this name:</p>
+  <div class="prompt" id="step1-prompt"><em style="color:var(--muted)">← Select a use case above to see the agent name</em><button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 
 <div class="activity">
   <div class="head"><span class="num">Step 2</span><span class="time">2 min</span></div>
   <h4>Add a description and system instructions</h4>
-  <p>Add a description, then paste these system instructions (adapt for your use case):</p>
-  <div class="prompt" id="step2-prompt">You are the IHH [Brand Governance / Finance Policy / Sustainability] Advisor. You answer questions by referencing the official IHH documents connected to your knowledge base.
-
-Rules:
-- Always cite the specific document and section you are drawing from
-- If the answer is not in your knowledge base, say so clearly — do not guess
-- For [financial approvals / brand compliance / ESG targets], always refer to the latest policy version
-- Keep answers concise and actionable — executives need clarity, not length
-- If a question requires a decision beyond what policy covers, recommend escalation to the relevant Group team<button class="copy" onclick="cp(this)">Copy</button></div>
+  <p>Add a description, then paste these system instructions:</p>
+  <div class="prompt" id="step2-prompt"><em style="color:var(--muted)">← Select a use case above to see the system instructions</em><button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 
 <div class="activity">
   <div class="head"><span class="num">Step 3</span><span class="time">5 min</span></div>
   <h4>Connect knowledge sources from SharePoint</h4>
-  <p>Click <b>Add Knowledge</b> → SharePoint. Upload or connect the relevant documents for your use case. Download sample files below if needed.</p>
-  <table>
-    <tr><th>Use Case</th><th>Knowledge Sources</th><th>Download Sample</th></tr>
-    <tr>
-      <td>🏷️ Brand</td>
-      <td>Contoso_Brand_Guidelines.docx, Tone of Voice Manual, Social Media Policy, Approved Messaging Library</td>
-      <td><a href="samples/Contoso_Brand_Guidelines.docx">Contoso_Brand_Guidelines.docx ↓</a></td>
-    </tr>
-    <tr>
-      <td>💰 Finance</td>
-      <td>Contoso_Hospital_Policies.docx (Section 1: Financial Approvals), CAPEX Policy, Budget Guidelines 2026, Procurement SOP</td>
-      <td><a href="samples/Contoso_Hospital_Policies.docx">Contoso_Hospital_Policies.docx ↓</a></td>
-    </tr>
-    <tr>
-      <td>🌱 Sustainability</td>
-      <td>Contoso_Hospital_Policies.docx (Section 4: ESG), Contoso_Sustainability_ESG.xlsx (Targets tabs), Carbon Reduction Roadmap, Waste Management SOP</td>
-      <td><a href="samples/Contoso_Sustainability_ESG.xlsx">Contoso_Sustainability_ESG.xlsx ↓</a></td>
-    </tr>
-  </table>
+  <p>Click <b>Add Knowledge</b> → SharePoint. Upload or connect the relevant documents below:</p>
+  <div id="step3-content"><em style="color:var(--muted)">← Select a use case above</em></div>
 </div>
 
 <div class="activity">
   <div class="head"><span class="num">Step 4</span><span class="time">5 min</span></div>
   <h4>Test your agent with 3 realistic queries</h4>
   <p>Use these test queries — verify the agent cites the source document and section correctly:</p>
-  <table>
-    <tr><th>Use Case</th><th>Test Query 1</th><th>Test Query 2</th><th>Test Query 3</th></tr>
-    <tr>
-      <td>🏷️ Brand</td>
-      <td>"Review this press release for brand compliance"</td>
-      <td>"Is it acceptable to name a competitor in our press release?"</td>
-      <td>"What's our approved messaging on sustainability?"</td>
-    </tr>
-    <tr>
-      <td>💰 Finance</td>
-      <td>"What is the approval process for a CAPEX above RM 1 million?"</td>
-      <td>"Who approves vendor contracts over RM 500K?"</td>
-      <td>"What is the budget variance threshold that requires escalation to Group Finance?"</td>
-    </tr>
-    <tr>
-      <td>🌱 Sustainability</td>
-      <td>"What is our 2026 carbon reduction target for Gleneagles KL?"</td>
-      <td>"How do we calculate Scope 2 emissions under the IHH framework?"</td>
-      <td>"Which hospitals are furthest from their 2026 recycling targets?"</td>
-    </tr>
-  </table>
+  <div id="step4-content"><em style="color:var(--muted)">← Select a use case above</em></div>
   <div class="callout warn" style="margin-top:12px"><b>If the agent guesses rather than citing a source:</b> Refine the system instructions — add "Do not answer questions not covered in your knowledge base. If unsure, say: I don't have that in my current knowledge base — please contact [team]."</div>
 </div>
 
@@ -432,7 +386,7 @@ Rules:
   <div class="head"><span class="num">Step 5 · Share</span><span class="time">1 min</span></div>
   <h4>Share with your team</h4>
   <p>Once satisfied, click <b>Publish</b> → share the link with colleagues. They can access your agent directly from M365 Copilot without any technical setup.</p>
-  <div class="callout good">🎉 You've built a working AI agent in under 15 minutes — grounded on IHH's real documents, with citations, running 24/7.</div>
+  <div class="callout good" id="step5-callout">🎉 You've built a working AI agent in under 15 minutes — grounded on real documents, with citations, running 24/7.</div>
 </div>
 </div>
 </div>
@@ -447,11 +401,11 @@ Rules:
 <p class="lead">All files use anonymised/sample IHH data. Do not use for operational decisions. Upload to SharePoint or open directly in Microsoft 365.</p>
 <table>
   <tr><th>#</th><th>File</th><th>Type</th><th>Used In</th><th>What It Contains</th></tr>
-  <tr><td>01</td><td><a href="samples/Contoso_Market_Intelligence.xlsx">Contoso_Market_Intelligence.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 1 context</td><td>Global market overview, competitor profiles, M&A transactions, SWOT — across Malaysia, Singapore, Turkey, India &amp; more</td></tr>
-  <tr><td>02</td><td><a href="samples/Contoso_Sustainability_ESG.xlsx">Contoso_Sustainability_ESG.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Exercise 2</td><td>24 months ESG metrics across 6 hospitals + 2026/2030 targets, benchmarks, quarterly summaries</td></tr>
-  <tr><td>03</td><td><a href="samples/Contoso_Financial_Performance.xlsx">Contoso_Financial_Performance.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>24 months P&amp;L by hospital, budget vs actual, KPI dashboard, payer mix trends</td></tr>
-  <tr><td>04</td><td><a href="samples/Contoso_Hospital_Policies.docx">Contoso_Hospital_Policies.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>7-section policy manual: financial approvals, KPIs, clinical governance, ESG, comms, HR, digital</td></tr>
-  <tr><td>05</td><td><a href="samples/Contoso_Brand_Guidelines.docx">Contoso_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>10-section brand guide: logo, colour, typography, tone of voice, messaging, social media, press release templates</td></tr>
+  <tr><td>01</td><td><a href="samples/01_Contoso_Market_Intelligence.xlsx">01_Contoso_Market_Intelligence.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 1 context</td><td>Global market overview, competitor profiles, M&A transactions, SWOT — across Malaysia, Singapore, Turkey, India &amp; more</td></tr>
+  <tr><td>02</td><td><a href="samples/02_Contoso_Sustainability_ESG.xlsx">02_Contoso_Sustainability_ESG.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Exercise 2</td><td>24 months ESG metrics across 6 hospitals + 2026/2030 targets, benchmarks, quarterly summaries</td></tr>
+  <tr><td>03</td><td><a href="samples/03_Contoso_Financial_Performance.xlsx">03_Contoso_Financial_Performance.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>24 months P&amp;L by hospital, budget vs actual, KPI dashboard, payer mix trends</td></tr>
+  <tr><td>04</td><td><a href="samples/04_Contoso_Hospital_Policies.docx">04_Contoso_Hospital_Policies.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>7-section policy manual: financial approvals, KPIs, clinical governance, ESG, comms, HR, digital</td></tr>
+  <tr><td>05</td><td><a href="samples/05_Contoso_Brand_Guidelines.docx">05_Contoso_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>10-section brand guide: logo, colour, typography, tone of voice, messaging, social media, press release templates</td></tr>
   <tr><td>06</td><td><a href="samples/01-esg-metrics-data.txt">01-esg-metrics-data.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 2 reference</td><td>ESG data summary + analysis prompts in plain text (copy-paste friendly)</td></tr>
   <tr><td>07</td><td><a href="samples/02-market-intelligence.txt">02-market-intelligence.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 1 reference</td><td>Global market data summary + Researcher prompts in plain text</td></tr>
 </table>
@@ -561,3 +515,4 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
