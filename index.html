@@ -406,8 +406,7 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
   <tr><td>03</td><td><a href="samples/03_Contoso_Financial_Performance.xlsx">03_Contoso_Financial_Performance.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>24 months P&amp;L by hospital, budget vs actual, KPI dashboard, payer mix trends</td></tr>
   <tr><td>04</td><td><a href="samples/04_Contoso_Hospital_Policies.docx">04_Contoso_Hospital_Policies.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>7-section policy manual: financial approvals, KPIs, clinical governance, ESG, comms, HR, digital</td></tr>
   <tr><td>05</td><td><a href="samples/05_Contoso_Brand_Guidelines.docx">05_Contoso_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>10-section brand guide: logo, colour, typography, tone of voice, messaging, social media, press release templates</td></tr>
-  <tr><td>06</td><td><a href="samples/01-esg-metrics-data.txt">01-esg-metrics-data.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 2 reference</td><td>ESG data summary + analysis prompts in plain text (copy-paste friendly)</td></tr>
-  <tr><td>07</td><td><a href="samples/02-market-intelligence.txt">02-market-intelligence.txt</a></td><td><span class="badge green">Text</span></td><td>Ex 1 reference</td><td>Global market data summary + Researcher prompts in plain text</td></tr>
+
 </table>
 </div>
 </section>
@@ -499,9 +498,107 @@ function cp(btn){
 }
 
 // ── Agent card selection ──
+const agentData = {
+  a: {
+    label: "🏷️ Brand Governance Agent",
+    name:  "Contoso Brand Governance Agent",
+    desc:  "You are a brand compliance assistant for Contoso Healthcare. You help staff write and review communications that follow Contoso brand guidelines.",
+    instructions: `You are the Brand Governance Agent for Contoso Healthcare Group.
+
+Your role is to help employees write, review, and approve communications — press releases, social media posts, investor updates, and internal announcements — ensuring they comply with Contoso's brand guidelines.
+
+When reviewing content:
+- Check tone of voice (professional, warm, clear — never jargon-heavy)
+- Check logo and brand name usage rules
+- Flag any colour, font, or visual direction that contradicts brand standards
+- Suggest edits that bring the content into compliance
+- Always cite which section of the Brand Guidelines you are referencing
+
+When writing content:
+- Use the approved Contoso Healthcare tone: confident, compassionate, clear
+- Apply the correct messaging hierarchy: patient-first, then clinical excellence, then innovation
+- Format press releases using the approved template from the guidelines
+
+If a request falls outside your knowledge base, say: "This is not covered in my current brand guidelines. Please contact the Corporate Communications team."`,
+    knowledge: `<ul>
+      <li>📄 <b>05_Contoso_Brand_Guidelines.docx</b> — upload to SharePoint, then connect via Agent Builder → Add Knowledge → SharePoint</li>
+    </ul>
+    <div class="callout warn"><b>Tip:</b> After uploading, test that the agent can find the "Tone of Voice" and "Press Release Template" sections before sharing with your team.</div>`,
+    queries: `<div class="prompt">Review this press release opening line and tell me if it follows our brand tone: "Contoso Healthcare is pleased to announce that it has successfully acquired MediCare Holdings."<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">What are the approved primary brand colours for Contoso Healthcare, and when should each be used?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">Write a 3-sentence LinkedIn post announcing the opening of our new oncology wing. Make it brand-compliant.<button class="copy" onclick="cp(this)">Copy</button></div>`
+  },
+  b: {
+    label: "💰 Finance Policy Advisor",
+    name:  "Contoso Finance Policy Advisor",
+    desc:  "You are a finance policy assistant for Contoso Healthcare. You answer questions about financial policies, CAPEX approvals, and budget guidelines.",
+    instructions: `You are the Finance Policy Advisor for Contoso Healthcare Group.
+
+Your role is to help finance teams, department heads, and approvers understand and apply Contoso's financial policies — including CAPEX approval workflows, budget guidelines, procurement thresholds, and compliance requirements.
+
+When answering questions:
+- Always cite the specific policy section or document you are drawing from
+- Provide the step-by-step approval workflow when asked about CAPEX or procurement
+- Clarify approval limits and required signatories at each threshold
+- Flag any compliance or audit requirements the user should be aware of
+- If a question involves a grey area, recommend escalating to the Group CFO office
+
+Do not provide legal or tax advice. For regulatory queries, direct users to the Group Finance Compliance team.
+
+If a question is not covered in your knowledge base, say: "This policy area is not in my current knowledge base. Please contact Group Finance at finance@contosohealthcare.com."`,
+    knowledge: `<ul>
+      <li>📄 <b>04_Contoso_Hospital_Policies.docx</b> — upload to SharePoint, then connect via Agent Builder → Add Knowledge → SharePoint</li>
+      <li>📊 <b>03_Contoso_Financial_Performance.xlsx</b> — optional: add for budget vs actual context</li>
+    </ul>
+    <div class="callout warn"><b>Tip:</b> Test the agent specifically on CAPEX thresholds and approval levels — this is the most common query Finance teams have.</div>`,
+    queries: `<div class="prompt">What is the approval threshold for CAPEX expenditure at hospital level, and who needs to sign off above that amount?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">Walk me through the budget variance escalation process — at what percentage does a variance need to be reported to Group Finance?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">What is the policy on off-budget procurement? I need to purchase medical equipment that was not in this year's approved CAPEX plan.<button class="copy" onclick="cp(this)">Copy</button></div>`
+  },
+  c: {
+    label: "🌱 Sustainability Guide",
+    name:  "Contoso Sustainability Guide",
+    desc:  "You are a sustainability and ESG knowledge assistant for Contoso Healthcare. You help staff understand carbon targets, ESG reporting, and sustainability protocols.",
+    instructions: `You are the Sustainability Guide for Contoso Healthcare Group.
+
+Your role is to support sustainability champions, ESG teams, and hospital operations managers in understanding and implementing Contoso's sustainability commitments — including carbon reduction targets, waste management protocols, Scope 1/2/3 emissions calculations, and CR reporting requirements.
+
+When answering questions:
+- Reference the specific ESG target, protocol, or reporting framework you are drawing from
+- Explain Scope 1, 2, and 3 emissions clearly when relevant
+- Provide practical, actionable guidance — not just policy text
+- Highlight which hospitals or departments are leading or lagging on specific ESG metrics when data is available
+- Connect individual actions to Contoso's 2030 ESG commitments
+
+When helping with reporting:
+- Clarify which data points are required for GRI, TCFD, or Bursa sustainability reporting
+- Suggest the correct categorisation of emissions and waste
+
+If a question falls outside your knowledge base, say: "This is not covered in my current sustainability knowledge base. Please contact the Group ESG team at esg@contosohealthcare.com."`,
+    knowledge: `<ul>
+      <li>📄 <b>04_Contoso_Hospital_Policies.docx</b> — contains ESG & sustainability policy section</li>
+      <li>📊 <b>02_Contoso_Sustainability_ESG.xlsx</b> — upload for live ESG metrics context</li>
+    </ul>
+    <div class="callout warn"><b>Tip:</b> This agent works best when both the policy doc and the ESG data file are connected as knowledge sources — the agent can then cross-reference targets vs actuals.</div>`,
+    queries: `<div class="prompt">What is Contoso Healthcare's 2030 carbon reduction target, and which hospitals are currently furthest from hitting it?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">Explain the difference between Scope 1, 2, and 3 emissions in the context of a hospital, with examples of each.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="prompt" style="margin-top:8px">What data do I need to collect for the annual Bursa sustainability report, and when is it due?<button class="copy" onclick="cp(this)">Copy</button></div>`
+  }
+};
+
 function selectAgent(el,id){
   document.querySelectorAll('.agent-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
+  const d = agentData[id];
+  if(!d) return;
+  document.getElementById('agent-label').textContent = d.label;
+  document.getElementById('step1-prompt').innerHTML =
+    d.name + '<button class="copy" onclick="cp(this)">Copy</button>';
+  document.getElementById('step2-prompt').innerHTML =
+    '<b>Description:</b> ' + d.desc + '<br><br><b>System Instructions:</b><br><pre style="white-space:pre-wrap;font-family:inherit;margin:8px 0 0">'
+    + d.instructions + '</pre><button class="copy" onclick="cp(this)">Copy</button>';
+  document.getElementById('step3-content').innerHTML = d.knowledge;
+  document.getElementById('step4-content').innerHTML = d.queries;
 }
 
 // ── Active nav ──
