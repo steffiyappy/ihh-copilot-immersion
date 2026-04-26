@@ -354,28 +354,21 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 <h4 id="agent-steps-title">Agent Builder — step-by-step · <span id="agent-label">Select a use case above ↑</span></h4>
 
 <div class="activity">
-  <div class="head"><span class="num">Step 1</span><span class="time">2 min</span></div>
-  <h4>Open Agent Builder and create your agent</h4>
-  <p>Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Create</b> → <b>New Agent</b>. Enter this name:</p>
-  <div class="prompt" id="step1-prompt"><em style="color:var(--muted)">← Select a use case above to see the agent name</em><button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="head"><span class="num">Step 1</span><span class="time">3 min</span></div>
+  <h4>Open Agent Builder and configure your agent</h4>
+  <p>Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Create</b> → <b>New Agent</b>. Fill in the <b>Name</b>, <b>Description</b>, and <b>Instructions</b> fields using the content below — each has its own Copy button:</p>
+  <div id="step1-content"><em style="color:var(--muted)">← Select a use case above to see the agent setup</em></div>
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Step 2</span><span class="time">2 min</span></div>
-  <h4>Add a description and system instructions</h4>
-  <p>Add a description, then paste these system instructions:</p>
-  <div class="prompt" id="step2-prompt"><em style="color:var(--muted)">← Select a use case above to see the system instructions</em><button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
-
-<div class="activity">
-  <div class="head"><span class="num">Step 3</span><span class="time">5 min</span></div>
+  <div class="head"><span class="num">Step 2</span><span class="time">5 min</span></div>
   <h4>Connect knowledge sources from SharePoint</h4>
   <p>Click <b>Add Knowledge</b> → SharePoint. Upload or connect the relevant documents below:</p>
   <div id="step3-content"><em style="color:var(--muted)">← Select a use case above</em></div>
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Step 4</span><span class="time">5 min</span></div>
+  <div class="head"><span class="num">Step 3</span><span class="time">5 min</span></div>
   <h4>Test your agent with 3 realistic queries</h4>
   <p>Use these test queries — verify the agent cites the source document and section correctly:</p>
   <div id="step4-content"><em style="color:var(--muted)">← Select a use case above</em></div>
@@ -383,7 +376,7 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Step 5 · Share</span><span class="time">1 min</span></div>
+  <div class="head"><span class="num">Step 4 · Share</span><span class="time">1 min</span></div>
   <h4>Share with your team</h4>
   <p>Once satisfied, click <b>Publish</b> → share the link with colleagues. They can access your agent directly from M365 Copilot without any technical setup.</p>
   <div class="callout good" id="step5-callout">🎉 You've built a working AI agent in under 15 minutes — grounded on real documents, with citations, running 24/7.</div>
@@ -592,11 +585,13 @@ function selectAgent(el,id){
   const d = agentData[id];
   if(!d) return;
   document.getElementById('agent-label').textContent = d.label;
-  document.getElementById('step1-prompt').innerHTML =
-    d.name + '<button class="copy" onclick="cp(this)">Copy</button>';
-  document.getElementById('step2-prompt').innerHTML =
-    '<b>Description:</b> ' + d.desc + '<br><br><b>System Instructions:</b><br><pre style="white-space:pre-wrap;font-family:inherit;margin:8px 0 0">'
-    + d.instructions + '</pre><button class="copy" onclick="cp(this)">Copy</button>';
+  document.getElementById('step1-content').innerHTML =
+    '<p style="margin:4px 0 6px"><span style="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em">Name</span></p>' +
+    '<div class="prompt">' + d.name + '<button class="copy" onclick="cp(this)">Copy</button></div>' +
+    '<p style="margin:12px 0 6px"><span style="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em">Description</span></p>' +
+    '<div class="prompt">' + d.desc + '<button class="copy" onclick="cp(this)">Copy</button></div>' +
+    '<p style="margin:12px 0 6px"><span style="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em">System Instructions</span></p>' +
+    '<div class="prompt"><pre style="white-space:pre-wrap;font-family:inherit;margin:0">' + d.instructions + '</pre><button class="copy" onclick="cp(this)">Copy</button></div>';
   document.getElementById('step3-content').innerHTML = d.knowledge;
   document.getElementById('step4-content').innerHTML = d.queries;
 }
