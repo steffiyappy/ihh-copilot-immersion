@@ -271,8 +271,8 @@ td a:hover{color:var(--accent2)}
     <div style="display:flex;flex-direction:column;gap:8px;margin:4px 0 12px">
       <a href="samples/01_Contoso_Market_Intelligence.xlsx" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,100,200,.12);border:1px solid var(--border);border-radius:6px;padding:8px 14px;color:var(--text);text-decoration:none;font-size:13px;width:fit-content">
         <span style="font-size:16px">📊</span><span><b>01_Contoso_Market_Intelligence.xlsx</b> <span style="color:var(--muted)">· Exercise 1</span></span></a>
-      <a href="samples/02_Contoso_Sustainability_ESG.xlsx" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,100,200,.12);border:1px solid var(--border);border-radius:6px;padding:8px 14px;color:var(--text);text-decoration:none;font-size:13px;width:fit-content">
-        <span style="font-size:16px">📊</span><span><b>02_Contoso_Sustainability_ESG.xlsx</b> <span style="color:var(--muted)">· Exercise 2</span></span></a>
+      <a href="samples/03 Contoso_Sustainability_ESG.xlsx" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,100,200,.12);border:1px solid var(--border);border-radius:6px;padding:8px 14px;color:var(--text);text-decoration:none;font-size:13px;width:fit-content">
+        <span style="font-size:16px">📊</span><span><b>03 Contoso_Sustainability_ESG.xlsx</b> <span style="color:var(--muted)">· Exercise 2</span></span></a>
       <a href="samples/04_Contoso_Hospital_Policies.docx" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,100,200,.12);border:1px solid var(--border);border-radius:6px;padding:8px 14px;color:var(--text);text-decoration:none;font-size:13px;width:fit-content">
         <span style="font-size:16px">📄</span><span><b>04_Contoso_Hospital_Policies.docx</b> <span style="color:var(--muted)">· Exercise 3</span></span></a>
       <a href="samples/05_Contoso_Brand_Guidelines.docx" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,100,200,.12);border:1px solid var(--border);border-radius:6px;padding:8px 14px;color:var(--text);text-decoration:none;font-size:13px;width:fit-content">
@@ -391,14 +391,14 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 <!-- EXERCISE 3 (was Exercise 2) -->
 <!-- ──────────────────────────────────────────────────── -->
 <section id="ex3">
-<div class="modulehead"><div class="num">2</div><h2>Exercise 3 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
+<div class="modulehead"><div class="num">2</div><h2>Exercise 3 · ESG/CR Analytics<small>18 min · Excel + Word + PowerPoint + Cowork</small></h2></div>
 <div class="callout good"><b>When to do this:</b> 10:15–10:30. Download <a href="samples/02_Contoso_Sustainability_ESG.xlsx"><b>02_Contoso_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
 
 <div class="card">
 <p class="lead">Consolidate 12 months of ESG metrics across 6 IHH hospitals, build an executive dashboard, and draft a CR report section — all using Copilot in Excel and Word.</p>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 3.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · 02_Contoso_Sustainability_ESG.xlsx</span></div>
+  <div class="head"><span class="num">Task 3.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · 03 Contoso_Sustainability_ESG.xlsx</span></div>
   <h4>Analyse carbon emissions and identify gaps</h4>
   <p>With the file open in Excel, open the <b>Copilot panel</b> (Home ribbon → Copilot). Run this analysis:</p>
   <div class="prompt">Analyse the ESG data in this file. 
@@ -438,10 +438,29 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 3.4 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
+  <div class="head"><span class="num">Task 3.4</span><span class="time">3 min</span><span class="file">&#127381; PowerPoint Copilot</span></div>
+  <h4>Build the ESG committee presentation</h4>
+  <p>Open a blank <b>PowerPoint</b> (powerpoint.com or desktop app). In the <b>Copilot pane</b>, type <code>/</code> to reference the Word document you saved in Task 3.3, then use this prompt:</p>
+  <p style="font-size:13px;color:var(--muted);margin:4px 0 10px">&#128161; Type <code>/</code> in the Copilot pane to browse and reference your OneDrive files directly in the prompt.</p>
+  <div class="prompt">Create a 7-slide ESG performance presentation for the Contoso Healthcare Group Sustainability Committee using the content in /Contoso Healthcare FY2025-26 CR Report.docx.
+
+Slide structure:
+- Slide 1: Title — Contoso Healthcare FY2025/26 ESG Performance Review
+- Slide 2: Executive snapshot — headline achievement, key metric, and top risk (RAG status)
+- Slide 3: Carbon emissions trend — all 6 hospitals vs 2026 target
+- Slide 4: Hospital performance table — RAG status vs all 5 KPIs (Carbon, Waste, Energy, Recycling, Renewable)
+- Slide 5: Top 3 improvement stories with supporting data
+- Slide 6: Hospital most at risk — current gap and recommended corrective actions
+- Slide 7: FY2027 interim targets and Net Zero 2050 pathway
+
+Keep it concise — one key message per slide. Format for a boardroom screen. Use [PLACEHOLDER] for any figure not in the source document.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+  <div class="head"><span class="num">Task 3.5 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
   <h4>Delegate the whole workflow to Cowork</h4>
   <p><b>Cowork</b> lets you describe an outcome and Copilot orchestrates the steps — with approval checkpoints before it takes actions like sending emails or scheduling meetings.</p>
-  <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file (02_Contoso_Sustainability_ESG.xlsx), create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
+  <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file. Reference it using / and select 03 Contoso_Sustainability_ESG.xlsx from your OneDrive. create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
   <div class="callout"><b>Note:</b> Cowork creates a plan first and asks you to approve before taking any action (sending email, scheduling meeting). You stay in control.</div>
 </div>
 
@@ -587,8 +606,8 @@ Then start a new Teams group chat with the incoming ICU team and share the Escal
 </div>
 
 <div class="card" style="margin-top:18px">
-  <h4 style="margin:0 0 4px;font-size:16px">&#128161; More Copilot Examples</h4>
-  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Additional examples for clinical documentation and hospital support functions (HR, IT, Finance, Operations). These complement the community prompts above.</p>
+  <h4 style="margin:0 0 4px;font-size:16px">&#128161; More Cowork Examples — Clinical &amp; Hospital Operations</h4>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Additional Cowork prompts for clinical documentation and hospital support functions (HR, IT, Finance, Operations). These complement the community prompts above.</p>
   <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
     <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">&#128299; Surgical Case Report &amp; CPD Presentation <span style="font-weight:400;color:var(--muted);font-size:0.8rem">&#183; OneDrive, Outlook, Teams, Word, PowerPoint &#183; Advanced</span></summary>
     <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Assembles all clinical documentation for a complex or unique surgical case into a structured CPD case presentation and a publication-ready case report draft. Suitable for laparoscopic liver resection, pancreaticogastrostomy, and other technically demanding procedures worth documenting for peer learning and journals.</p>
