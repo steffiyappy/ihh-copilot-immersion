@@ -141,8 +141,8 @@ td a:hover{color:var(--accent2)}
     <a href="#getstarted">🔑 Log in</a>
     <h3>Exercises</h3>
     <a href="#ex1">Exercise 1 · Researcher</a>
-    <a href="#ex2">Exercise 2 · ESG Analytics</a>
-    <a href="#ex3">Exercise 3 · Agent Builder</a>
+    <a href="#ex3">Exercise 2 · ESG Analytics</a>
+    <a href="#ex4">Exercise 3 · Agent Builder</a>
     <h3>Resources</h3>
     <a href="#files">Sample files</a>
     <a href="#tips">Tips &amp; prompts</a>
@@ -331,9 +331,58 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 </section>
 
 <!-- ──────────────────────────────────────────────────── -->
-<!-- EXERCISE 2 -->
+<!-- EXERCISE 2: Capital Markets -->
 <!-- ──────────────────────────────────────────────────── -->
-<section id="ex2">
+<section id="ex3">
+<div class="modulehead"><div class="num">3</div><h2>Exercise 3<small>Capital Markets &amp; Corporate Actions Advisor · 20 min</small></h2></div>
+<div class="card goal">
+  <b>🎯 Goal:</b> Use Copilot in Excel to analyse corporate actions history, benchmark transactions against peers, review the regulatory calendar, and draft an advisory note — then explore the out-of-box <b>Analyst Agent</b> for deeper AI-driven analysis.
+</div>
+<div class="card">
+  <div class="filetag">📂 File: <b>02 Contoso_Capital_Markets.xlsx</b> — already in your OneDrive</div>
+
+  <div class="activity">
+    <div class="head"><span class="num">Task 3.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot</span></div>
+    <h4>Analyse corporate actions history</h4>
+    <p>Open <b>02 Contoso_Capital_Markets.xlsx</b> from your OneDrive. Go to the <b>Corporate_Actions</b> tab. Open Copilot and ask:</p>
+    <div class="prompt">Summarise the corporate actions history for Contoso Health. How much total capital has been raised? What is the breakdown by action type (Rights Issue, Bond, M&A, IPO)? Which deals are still in Planning status and what is their combined value?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:10px">Then follow up with:</p>
+    <div class="prompt">Create a bar chart showing deal size by action type. Highlight the deals that are still in Planning status.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+
+  <div class="activity">
+    <div class="head"><span class="num">Task 3.2</span><span class="time">5 min</span><span class="file">📊 Excel Copilot</span></div>
+    <h4>Benchmark against peer transactions</h4>
+    <p>Switch to the <b>Transaction_Benchmarks</b> tab. Ask Copilot:</p>
+    <div class="prompt">Compare Contoso Health's EV/EBITDA and Revenue multiples against the peer group in this table. Who is trading at the highest valuation? Where does Contoso rank? Highlight any outliers.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:10px">Then:</p>
+    <div class="prompt">Create a scatter chart of EV/EBITDA vs Revenue Multiple for all peers. Label each data point with the company name.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+
+  <div class="activity">
+    <div class="head"><span class="num">Task 3.3</span><span class="time">5 min</span><span class="file">📊 Excel + 📝 Word</span></div>
+    <h4>Review regulatory calendar &amp; draft advisory note</h4>
+    <p>Switch to the <b>Capital_Market_Calendar</b> tab. Ask Copilot:</p>
+    <div class="prompt">Review the capital market calendar. Which milestones are overdue or at risk? Summarise the key regulatory steps needed for the proposed Rights Issue and Green Bond. What are the top 3 risk flags I should escalate to the CFO?<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:10px">Then open a new <b>Word</b> document and use Copilot to draft:</p>
+    <div class="prompt">Draft a 1-page Capital Markets Advisory Note for the Contoso Health CFO. Cover: (1) Status of the proposed Rights Issue and Green Bond, (2) Key regulatory milestones and risks, (3) Recommended next actions with owners. Tone: concise, board-ready.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+
+  <div class="activity bonus">
+    <div class="head"><span class="num">⭐ Bonus</span><span class="time">5 min</span><span class="file">🤖 Analyst Agent</span></div>
+    <h4>Use the out-of-box Analyst Agent for deeper analysis</h4>
+    <p>In <b>M365 Copilot</b> (copilot.microsoft.com), click the <b>Agents</b> icon and select the built-in <b>Analyst</b> agent. Upload or reference your Capital Markets file and try these prompts:</p>
+    <div class="prompt">You are a capital markets analyst. Using the transaction benchmarks data, build a valuation model comparing Contoso Health against peers on EV/EBITDA, Revenue multiple, and Price per Bed. Identify whether Contoso appears under or over-valued relative to the peer median. Present findings in a structured table.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:10px">Or try:</p>
+    <div class="prompt">Analyse the regulatory requirements tab. Map out a critical path timeline for the Rights Issue from today to listing. Identify the top 3 bottlenecks and suggest how to mitigate each one.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px"><i>💡 Analyst Agent can run Python-style analysis, create charts, build models and iterate — all in natural language.</i></p>
+  </div>
+</div>
+</section>
+<!-- ──────────────────────────────────────────────────── -->
+<!-- EXERCISE 3 (was Exercise 2) -->
+<!-- ──────────────────────────────────────────────────── -->
+<section id="ex3">
 <div class="modulehead"><div class="num">2</div><h2>Exercise 2 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
 <div class="callout good"><b>When to do this:</b> 10:15–10:30. Download <a href="samples/02_Contoso_Sustainability_ESG.xlsx"><b>02_Contoso_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
 
@@ -341,7 +390,7 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 <p class="lead">Consolidate 12 months of ESG metrics across 6 IHH hospitals, build an executive dashboard, and draft a CR report section — all using Copilot in Excel and Word.</p>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 2.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · 02_Contoso_Sustainability_ESG.xlsx</span></div>
+  <div class="head"><span class="num">Task 3.1</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · 02_Contoso_Sustainability_ESG.xlsx</span></div>
   <h4>Analyse carbon emissions and identify gaps</h4>
   <p>With the file open in Excel, open the <b>Copilot panel</b> (Home ribbon → Copilot). Run this analysis:</p>
   <div class="prompt">Analyse the ESG data in this file. 
@@ -353,7 +402,7 @@ Show results as a summary table.<button class="copy" onclick="cp(this)">Copy</bu
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 2.2</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · Dashboard</span></div>
+  <div class="head"><span class="num">Task 3.2</span><span class="time">5 min</span><span class="file">📊 Excel Copilot · Dashboard</span></div>
   <h4>Build an executive ESG dashboard</h4>
   <div class="prompt">Create an ESG dashboard on a new sheet called "Dashboard":
 1. A line chart: monthly carbon emissions trend (Apr 2025–Mar 2026) for all 6 hospitals, with a dashed target line for each
@@ -365,7 +414,7 @@ Format for C-suite presentation.<button class="copy" onclick="cp(this)">Copy</bu
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 2.3</span><span class="time">3 min</span><span class="file">📝 Word Copilot · CR Report</span></div>
+  <div class="head"><span class="num">Task 3.3</span><span class="time">3 min</span><span class="file">📝 Word Copilot · CR Report</span></div>
   <h4>Draft a CR report section</h4>
   <p>Open a new <b>Word</b> document. Reference your ESG analysis:</p>
   <div class="prompt">Draft a 2-page Corporate Responsibility report section for IHH Healthcare's FY2025/26 Annual Report.
@@ -381,11 +430,151 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 </div>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 2.4 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
+  <div class="head"><span class="num">Task 3.4 · Bonus</span><span class="time">2 min</span><span class="file">👥 Cowork</span></div>
   <h4>Delegate the whole workflow to Cowork</h4>
   <p><b>Cowork</b> lets you describe an outcome and Copilot orchestrates the steps — with approval checkpoints before it takes actions like sending emails or scheduling meetings.</p>
   <div class="prompt">Cowork: Analyse the ESG data in my recent Excel file (02_Contoso_Sustainability_ESG.xlsx), create a sustainability summary highlighting which hospitals are on track vs at risk for 2026 targets, draft an executive email to the Group Sustainability Committee with the top 3 findings, and schedule a 30-minute review meeting for next week.<button class="copy" onclick="cp(this)">Copy</button></div>
   <div class="callout"><b>Note:</b> Cowork creates a plan first and asks you to approve before taking any action (sending email, scheduling meeting). You stay in control.</div>
+</div>
+
+<div class="activity bonus">
+  <div class="head"><span class="num">⭐ Bonus · Healthcare Cowork Prompts</span><span class="time">Pick any</span><span class="file">👥 Cowork</span></div>
+  <h4>Real-world healthcare Cowork prompts — try any that match your role</h4>
+  <p>These are community-built prompts adapted from <a href="https://everythingischr0me.github.io/copilot-cowork-prompts/prompts/healthcare/" target="_blank">Cowork Toolkit · Healthcare</a>. Each delegates a full multi-step workflow to Copilot Cowork. Click any title to expand.</p>
+
+  <details style="margin-top:14px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">🏥 Case Conference Prep Pack <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· Outlook, Teams, PowerPoint, Word · Advanced</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Assembles the full evidence pack for multidisciplinary case conferences — pulling every relevant document, recent correspondence, and imaging report for each case on the agenda into a ready-to-present pack.</p>
+    <div class="prompt" style="margin-top:8px">Prepare case materials for the Contoso Oncology Tumor Board on 29 April 2025.
+
+Cases on today's agenda: Oncology Case Review — April 2025.
+
+For each case:
+1. Pull the most recent clinical documents for each case — pathology, imaging reports, prior consult notes from my OneDrive and SharePoint.
+2. Search Outlook for correspondence in the last 60 days referencing each case — flag any external specialist input.
+3. Search the Oncology Care Team channel in Teams for discussion threads about each case.
+4. Identify the presenting clinician and the specific question being brought to the board.
+
+Build a PowerPoint deck titled "Contoso Tumor Board — 29 April 2025" with:
+- One cover slide
+- 2–3 slides per case: Case Summary, Key Imaging/Pathology Findings, Specific Question for the Board, Prior Discussion Points
+
+Build a Word companion doc with full references for each case.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: Add "flag any cases where external specialist input was requested but not received" to surface gaps before the meeting.</i></p>
+  </details>
+
+  <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">📋 Patient Visit Prep Brief <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· Outlook, Teams, OneDrive, Word · Advanced</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Consolidates every signal about an upcoming patient visit — referral emails, prior consult notes, shared files, and care team chats — into a single pre-visit brief so the clinician walks in with full context.</p>
+    <div class="prompt" style="margin-top:8px">Build a visit prep brief for my appointment with Patient A.L. (Ref: MRN-10042) on 29 April 2025.
+
+Pull from across my M365:
+1. Last 180 days of emails referencing MRN-10042 — summarize referrals, specialist correspondence, and any unanswered clinical questions.
+2. Teams chats and channel posts in the Cardiology Care Team channel mentioning this patient.
+3. OneDrive files shared about this patient (imaging reports, external records, consult letters) in the last 180 days.
+4. Open action items or follow-ups from previous encounters.
+
+Output as a Word doc titled "Patient A.L. — Visit Brief 29 Apr 2025" with sections: Clinical Snapshot, Active Issues, Recent Correspondence, Open Follow-Ups, Suggested Focus Areas for Today.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: This supplements the EHR with communications context — it does not replace it.</i></p>
+  </details>
+
+  <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">📥 Referral Triage Queue <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· Outlook, Excel, Teams · Moderate</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Processes the inbound referral inbox — extracting referring provider, reason, urgency, and required documentation — into a ranked triage worklist so intake staff work the highest-priority cases first.</p>
+    <div class="prompt" style="margin-top:8px">Process all referral emails I've received in the last 7 days.
+
+For each referral email:
+1. Extract: referring provider name and practice, patient identifier, stated reason for referral, requested specialty or service, urgency level (if indicated), and whether required documentation (imaging, labs, prior notes) is attached or missing.
+2. Classify urgency as Urgent / Routine / Information-only based on referral language and clinical indicators.
+3. Flag any referral missing required documentation with a specific list of what's needed.
+
+Output an Excel worklist "Referral Triage — 29 April 2025" with columns: Received Date, Referring Provider, Patient ID, Specialty, Reason, Urgency, Documentation Status, Missing Items.
+
+Sort Urgent first, then by received date.
+
+Then start a new Teams group chat with my intake coordinator team and share today's queue summary — total volume, urgent count, and top documentation gaps blocking intake.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: Add "auto-draft a documentation request email to the referring practice for any referral missing records" to close the loop.</i></p>
+  </details>
+
+  <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">📜 Policy &amp; Regulatory Update Scan <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· Outlook, SharePoint, Word · Moderate</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Scans inbound communications from regulatory bodies and professional associations to flag policy changes and compliance deadlines — then maps each change to the internal policy document it affects.</p>
+    <div class="prompt" style="margin-top:8px">Scan the last 30 days of my inbox for regulatory, accreditation, or policy updates relevant to Contoso Healthcare.
+
+For each update found, extract:
+- Source (regulatory body, accreditation body, professional society, etc.)
+- Effective date
+- Topic area (clinical standards, credentialing, quality reporting, etc.)
+- Action required (review only / policy update / training needed)
+- Deadline for compliance
+
+Search my recent SharePoint files for existing internal Contoso Healthcare policies that relate to each update. Map each incoming change to the policy document it affects.
+
+Output a Word doc "Regulatory Update Tracker — 29 April 2025" with:
+- Executive summary of changes requiring action in the next 90 days
+- Detailed table: Source, Topic, Effective Date, Deadline, Action, Affected Policy, Owner
+- Flag any update with no clear internal policy owner
+
+Then start a new Teams group chat with the Contoso Compliance team and share the executive summary.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: Run this weekly — compliance drift happens in the gaps between scans.</i></p>
+  </details>
+
+  <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">🔬 Research Progress Report Assembly <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· OneDrive, Excel, Outlook, Word, Teams · Advanced</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Assembles periodic progress reports for clinical research grants by pulling enrollment data, adverse event logs, study team correspondence, and protocol amendments into a single narrative ready for PI review.</p>
+    <div class="prompt" style="margin-top:8px">Build the Q1 2025 (January–March) progress report for the CONTOSO-CARDIO-001 study (IRB Protocol #IRB-2024-0087).
+
+Pull from:
+1. "CONTOSO-CARDIO-001_Enrollment.xlsx" in my OneDrive — current enrollment numbers, targets, withdrawals, screen failures.
+2. "CONTOSO-CARDIO-001_AE_Log.xlsx" — adverse events and serious adverse events in Q1 2025.
+3. Recent OneDrive files in the CARDIO-001 folder — any protocol amendments filed in the period.
+4. Outlook emails related to the CONTOSO-CARDIO-001 study in Q1 2025 — flag correspondence on safety, compliance, or scope changes.
+5. Teams meeting recaps from the CARDIO-001 Study Team channel for key study team decisions.
+
+Draft a Word report "CONTOSO-CARDIO-001 Progress Report — Q1 2025" with sections:
+- Study Overview (1 paragraph)
+- Enrollment Summary (narrative + numbers vs. target)
+- Safety Summary (AE/SAE counts, any trends)
+- Protocol Amendments &amp; Deviations
+- Correspondence Summary
+- Study Team Decisions This Period
+- Planned Activities for Next Period
+- Appendix: source document references
+
+Flag any data gaps or missing documentation for PI review before submission.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: The PI must review every section for scientific accuracy — Cowork handles the assembly, not the clinical judgment.</i></p>
+  </details>
+
+  <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+    <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">🌙 Shift Handover Digest <span style="font-weight:400;color:var(--muted);font-size:0.8rem">· Teams, Outlook, Word · Moderate</span></summary>
+    <p style="margin-top:10px;color:var(--muted);font-size:0.9rem">Compiles the outgoing shift's communications — Teams chats, channel posts, and emails — into a structured digest for the incoming team, surfacing open items and escalation concerns first.</p>
+    <div class="prompt" style="margin-top:8px">Build the handover digest for the Contoso Central Hospital ICU shift change at 7:00 PM today.
+
+Pull from the last 12 hours:
+1. All messages in the ICU Central — Handover Teams channel.
+2. Teams group chats I'm part of that reference patients on this unit.
+3. Emails flagged with the "Handover" category or sent to my ICU distribution list.
+
+For each item, classify as:
+- Active issue (requires incoming shift action)
+- Awaiting result (labs, imaging, consult response pending)
+- Stable / FYI
+- Safety or escalation concern
+
+Output a Word doc titled "ICU Central Handover — 29 Apr 2025 19:00" with sections:
+- Escalation &amp; Safety Concerns (top of doc — nothing buried)
+- Active Issues by Patient Identifier
+- Pending Results
+- FYI / Stable
+- Outstanding items not yet resolved from prior shift
+
+Keep each entry to 2–3 lines. Reference the Teams message or email for each item so the incoming team can follow the thread.
+
+Then start a new Teams group chat with the incoming ICU team and share the Escalation &amp; Safety Concerns section immediately.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">💡 <i>Tip: Pair with a verbal handover — this supplements, it does not replace. Keep it short; handovers that become novels don't get read.</i></p>
+  </details>
+
+  <p style="margin-top:14px;font-size:0.85rem;color:var(--muted)">Source: <a href="https://everythingischr0me.github.io/copilot-cowork-prompts/prompts/healthcare/" target="_blank">Cowork Toolkit — Healthcare Prompts</a> · Community-built · MIT License</p>
 </div>
 </div>
 </section>
@@ -393,7 +582,7 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
 <!-- ──────────────────────────────────────────────────── -->
 <!-- EXERCISE 3 -->
 <!-- ──────────────────────────────────────────────────── -->
-<section id="ex3">
+<section id="ex4">
 <div class="modulehead"><div class="num">3</div><h2>Exercise 3 · Build Your Agent<small>20 min · Agent Builder · Choose your use case</small></h2></div>
 <div class="callout good"><b>When to do this:</b> 10:30–10:50. Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → Create → New Agent.</div>
 
@@ -462,7 +651,7 @@ Tone: Professional, factual, suitable for Bursa Malaysia sustainability disclosu
   <tr><th>#</th><th>File</th><th>Type</th><th>Used In</th><th>What It Contains</th></tr>
   <tr><td>01</td><td><a href="samples/01_Contoso_Market_Intelligence.xlsx">01_Contoso_Market_Intelligence.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 1 context</td><td>Global market overview, competitor profiles, M&A transactions, SWOT — across Malaysia, Singapore, Turkey, India &amp; more</td></tr>
   <tr><td>02</td><td><a href="samples/02_Contoso_Sustainability_ESG.xlsx">02_Contoso_Sustainability_ESG.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Exercise 2</td><td>24 months ESG metrics across 6 hospitals + 2026/2030 targets, benchmarks, quarterly summaries</td></tr>
-  <tr><td>03</td><td><a href="samples/03b_Contoso_Financial_Performance_BizChat.xlsx">03b_Contoso_Financial_Performance_BizChat.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>P&amp;L by hospital, budget vs actual, KPI dashboard, payer mix trends — optimised for M365 Copilot BizChat (150 rows/sheet)</td></tr>
+  <tr><td>03</td><td><a href="samples/03b_Contoso_Financial_Performance.xlsx">03b_Contoso_Financial_Performance.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Bonus / Ex 2</td><td>P&amp;L by hospital, budget vs actual, KPI dashboard, payer mix trends — optimised for M365 Copilot BizChat (150 rows/sheet)</td></tr>
   <tr><td>04</td><td><a href="samples/04_Contoso_Hospital_Policies.docx">04_Contoso_Hospital_Policies.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>7-section policy manual: financial approvals, KPIs, clinical governance, ESG, comms, HR, digital</td></tr>
   <tr><td>05</td><td><a href="samples/05_Contoso_Brand_Guidelines.docx">05_Contoso_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Exercise 3</td><td>10-section brand guide: logo, colour, typography, tone of voice, messaging, social media, press release templates</td></tr>
 
@@ -626,7 +815,7 @@ Do not provide legal or tax advice. For regulatory queries, direct users to the 
 If a question is not covered in your knowledge base, say: "This policy area is not in my current knowledge base. Please contact Group Finance at finance@contosohealthcare.com."`,
     knowledge: `<ul>
       <li>📄 <b>04_Contoso_Hospital_Policies.docx</b> — upload to SharePoint, then connect via Agent Builder → Add Knowledge → SharePoint</li>
-      <li>📊 <b>03b_Contoso_Financial_Performance_BizChat.xlsx</b> — optional: add for budget vs actual context</li>
+      <li>📊 <b>03b_Contoso_Financial_Performance.xlsx</b> — optional: add for budget vs actual context</li>
     </ul>
     <div class="callout warn"><b>Tip:</b> Test the agent specifically on CAPEX thresholds and approval levels — this is the most common query Finance teams have.</div>`,
     queries: `<div class="prompt">What is the approval threshold for CAPEX expenditure at hospital level, and who needs to sign off above that amount?<button class="copy" onclick="cp(this)">Copy</button></div>
@@ -692,6 +881,10 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
