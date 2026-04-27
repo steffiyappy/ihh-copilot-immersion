@@ -5,30 +5,30 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>IHH Healthcare · M365 Copilot Immersion · 29 Apr 2026</title>
 <style>
-:root{
-  --bg:#0b1020;--panel:#121a33;--panel2:#172244;--ink:#e8ecf7;
-  --muted:#a4adcb;--accent:#0064C8;--accent2:#22d3ee;--good:#22c55e;
-  --warn:#f59e0b;--danger:#ef4444;--border:#26315a;--code:#0a0f24;
-  --ihh:#003087;--shadow:0 8px 24px rgba(0,0,0,.35);--radius:14px;
-}
+
+/* THEME */
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--ihh:#c41e3a}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1020;--panel:#0e1633;--panel2:#0a1228;--ink:#e2e8f0;--muted:#94a3b8;--border:#1e2d4a;--sidebar-a:#0e1530;--sidebar-b:#0a0f24;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#172244;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418}}
+@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4}}
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;}
 a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
 code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
 .layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
-aside{background:linear-gradient(180deg,#0e1530,#0a0f24);border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .brand .logo{width:36px;height:36px;border-radius:9px;background:var(--ihh);display:grid;place-items:center;font-weight:900;color:#fff;font-size:12px;letter-spacing:-.5px}
 .brand h1{font-size:15px;margin:0;letter-spacing:.2px}
 .tag{font-size:11px;color:var(--muted);margin-bottom:18px}
 nav h3{font-size:10px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;margin:18px 0 8px}
 nav a{display:block;color:var(--ink);padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
-nav a:hover{background:#172244;text-decoration:none;border-color:var(--border)}
+nav a:hover{background:var(--nav-hover);text-decoration:none;border-color:var(--border);color:var(--ink)}
 nav a.active{background:rgba(0,100,200,.15);border-color:var(--accent);color:var(--accent2)}
 main{padding:28px 40px 80px;max-width:1080px}
 .hero{background:radial-gradient(800px 320px at 0% 0%,rgba(0,48,135,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(0,100,200,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
-.hero .pill{display:inline-block;background:#0a0f24;border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
 .hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
 .hero p{color:var(--muted);margin:0;max-width:780px}
 .meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
@@ -42,24 +42,24 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 .modulehead .num{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--ihh),var(--accent));display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
 .modulehead h2{margin:0;font-size:22px}
 .modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
-.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:#0e1633}
+.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--panel)}
 .activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
 .activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
 .activity .time{color:var(--muted);font-size:12px}
-.activity .file{font-size:12px;color:var(--accent2);background:#0a0f24;border:1px solid var(--border);padding:3px 9px;border-radius:6px}
+.activity .file{font-size:12px;color:var(--accent2);background:var(--badge-bg);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
 .activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
 .activity p{margin:6px 0;color:var(--muted);font-size:14px}
-.task-step{background:#0a1228;border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
+.task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
 .task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
 .task-step .tool-badge{display:inline-block;background:rgba(0,100,200,.2);border:1px solid var(--accent);color:var(--accent2);font-size:11px;padding:2px 8px;border-radius:5px;margin-left:8px;vertical-align:middle}
 .prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#dbe2ff;white-space:pre-wrap;line-height:1.6}
 .prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:var(--ink);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
 .prompt .copy:hover{background:var(--accent);color:#fff}
 .prompt .copy.copied{background:var(--good);color:#0a0f24}
-.callout{border-left:4px solid var(--accent2);background:#0e1c2c;padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
-.callout.warn{border-color:var(--warn);background:#2b220e}
-.callout.danger{border-color:var(--danger);background:#2b1414}
-.callout.good{border-color:var(--good);background:#0e2418}
+.callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
+.callout.warn{border-color:var(--warn);background:var(--callout-warn)}
+.callout.danger{border-color:var(--danger);background:var(--callout-bad)}
+.callout.good{border-color:var(--good);background:var(--callout-good)}
 .callout b{color:var(--ink)}
 table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
@@ -68,16 +68,16 @@ td a{color:var(--ink);font-weight:600}
 td a:hover{color:var(--accent2)}
 .agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
-.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:#0e1633}
+.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:var(--panel)}
 .agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
 .agenda>div:nth-last-child(-n+3){border-bottom:0}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
-.tool-card{background:#0e1633;border:1px solid var(--border);border-radius:10px;padding:14px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
 .tool-card .icon{font-size:22px;margin-bottom:6px}
 .tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
 .tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
 .agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
-.agent-card{background:#0e1633;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:border-color .2s}
+.agent-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:border-color .2s}
 .agent-card:hover,.agent-card.selected{border-color:var(--accent);background:rgba(0,100,200,.1)}
 .agent-card h5{margin:0 0 6px;font-size:15px}
 .agent-card p{margin:0;font-size:12px;color:var(--muted)}
@@ -94,7 +94,7 @@ td a:hover{color:var(--accent2)}
 .lock-box .ihh-logo{width:56px;height:56px;border-radius:14px;background:var(--ihh);display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;margin:0 auto 18px}
 .lock-box h2{margin:0 0 6px;font-size:22px}
 .lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
-.lock-box input{width:100%;background:#0a0f24;border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 16px;margin-bottom:12px;outline:none;font-family:inherit;transition:border-color .2s}
+.lock-box input{width:100%;background:var(--badge-bg);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 16px;margin-bottom:12px;outline:none;font-family:inherit;transition:border-color .2s}
 .lock-box input:focus{border-color:var(--accent)}
 .lock-box button{width:100%;background:var(--ihh);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer;transition:background .2s}
 .lock-box button:hover{background:var(--accent)}
@@ -141,8 +141,9 @@ td a:hover{color:var(--accent2)}
     <a href="#getstarted">🔑 Log in</a>
     <h3>Exercises</h3>
     <a href="#ex1">Exercise 1 · Researcher</a>
-    <a href="#ex3">Exercise 2 · ESG Analytics</a>
-    <a href="#ex4">Exercise 3 · Agent Builder</a>
+    <a href="#ex2">Exercise 2 · Capital Markets</a>
+    <a href="#ex3">Exercise 3 · ESG Analytics</a>
+    <a href="#ex4">Exercise 4 · Agent Builder</a>
     <h3>Resources</h3>
     <a href="#files">Sample files</a>
     <a href="#tips">Tips &amp; prompts</a>
@@ -333,8 +334,8 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 <!-- ──────────────────────────────────────────────────── -->
 <!-- EXERCISE 2: Capital Markets -->
 <!-- ──────────────────────────────────────────────────── -->
-<section id="ex3">
-<div class="modulehead"><div class="num">3</div><h2>Exercise 3<small>Capital Markets &amp; Corporate Actions Advisor · 20 min</small></h2></div>
+<section id="ex2">
+<div class="modulehead"><div class="num">2</div><h2>Exercise 2<small>Capital Markets &amp; Corporate Actions Advisor · 20 min</small></h2></div>
 <div class="card goal">
   <b>🎯 Goal:</b> Use Copilot in Excel to analyse corporate actions history, benchmark transactions against peers, review the regulatory calendar, and draft an advisory note — then explore the out-of-box <b>Analyst Agent</b> for deeper AI-driven analysis.
 </div>
@@ -383,7 +384,7 @@ Format: Board-ready, professional, concise. Use [PLACEHOLDER] for any data point
 <!-- EXERCISE 3 (was Exercise 2) -->
 <!-- ──────────────────────────────────────────────────── -->
 <section id="ex3">
-<div class="modulehead"><div class="num">2</div><h2>Exercise 2 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
+<div class="modulehead"><div class="num">2</div><h2>Exercise 3 · ESG/CR Analytics<small>15 min · Excel + Word + Cowork</small></h2></div>
 <div class="callout good"><b>When to do this:</b> 10:15–10:30. Download <a href="samples/02_Contoso_Sustainability_ESG.xlsx"><b>02_Contoso_Sustainability_ESG.xlsx</b></a> and open it in Excel before starting.</div>
 
 <div class="card">
@@ -583,7 +584,7 @@ Then start a new Teams group chat with the incoming ICU team and share the Escal
 <!-- EXERCISE 3 -->
 <!-- ──────────────────────────────────────────────────── -->
 <section id="ex4">
-<div class="modulehead"><div class="num">3</div><h2>Exercise 3 · Build Your Agent<small>20 min · Agent Builder · Choose your use case</small></h2></div>
+<div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Build Your Agent<small>20 min · Agent Builder · Choose your use case</small></h2></div>
 <div class="callout good"><b>When to do this:</b> 10:30–10:50. Go to <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → Create → New Agent.</div>
 
 <div class="card">
@@ -881,6 +882,10 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
