@@ -137,6 +137,8 @@ td a:hover{color:var(--accent2)}
     <a href="#overview">About this session</a>
     <a href="#agenda">Agenda</a>
     <a href="#tools">Tools used today</a>
+    <h3>Get Started</h3>
+    <a href="#getstarted">🔑 Log in</a>
     <h3>Exercises</h3>
     <a href="#ex1">Exercise 1 · Researcher</a>
     <a href="#ex2">Exercise 2 · ESG Analytics</a>
@@ -224,6 +226,42 @@ td a:hover{color:var(--accent2)}
 <!-- ──────────────────────────────────────────────────── -->
 <!-- EXERCISE 1 -->
 <!-- ──────────────────────────────────────────────────── -->
+<!-- GET STARTED / LOGIN -->
+<section id="getstarted">
+<div class="modulehead"><div class="num">🔑</div><h2>Before You Start<small>Open InPrivate / Incognito · Log in to your workshop account</small></h2></div>
+<div class="card">
+<p class="lead">You have been assigned a pre-provisioned M365 account. You must use this account — <b>not your own corporate account</b> — for all exercises today. This ensures everyone has the same Copilot access and licences.</p>
+
+<div class="callout warn">
+  <b>⚠️ Important — use InPrivate / Incognito mode:</b><br>
+  Open a <b>new InPrivate (Edge)</b> or <b>Incognito (Chrome)</b> window before logging in. This prevents conflicts with your existing corporate account.
+  <br><br>
+  <b>Edge:</b> Press <code>Ctrl + Shift + N</code> &nbsp;|&nbsp; <b>Chrome:</b> Press <code>Ctrl + Shift + N</code> &nbsp;|&nbsp; <b>Mac:</b> Press <code>Cmd + Shift + N</code>
+</div>
+
+<h4 style="margin-top:20px">Step 1 — Find your seat number and copy your account</h4>
+<p>Ask the facilitator for your seat number (1–25), then click your row below to copy the login details:</p>
+
+<div style="overflow-x:auto;margin-top:12px">
+<table id="accounts-table">
+  <thead><tr><th>Seat</th><th>Username</th><th>Password</th><th></th></tr></thead>
+  <tbody id="accounts-body"></tbody>
+</table>
+</div>
+
+<h4 style="margin-top:20px">Step 2 — Log in to Microsoft 365</h4>
+<ol>
+  <li>In your InPrivate/Incognito window, go to <a href="https://m365.cloud.microsoft" target="_blank"><b>m365.cloud.microsoft</b></a></li>
+  <li>Enter your username and click <b>Next</b></li>
+  <li>Enter the password and click <b>Sign in</b></li>
+  <li>If prompted to stay signed in, click <b>Yes</b></li>
+  <li>Once on the M365 home page, you are ready for the exercises ✅</li>
+</ol>
+
+<div class="callout good"><b>✅ Quick check:</b> You should see "Copilot" in the left nav or top app bar. If you don't see it, raise your hand and a facilitator will help.</div>
+</div>
+</section>
+
 <section id="ex1">
 <div class="modulehead"><div class="num">1</div><h2>Exercise 1 · Strategic Intelligence<small>15 min · Researcher + Model Council</small></h2></div>
 <div class="callout good"><b>When to do this:</b> Session 3 starts at 10:00. Exercise 1 runs 10:00–10:15. Open M365 Copilot at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> and click <b>Researcher</b>.</div>
@@ -489,6 +527,25 @@ function cp(btn){
     setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
   });
 }
+
+// ── Accounts table ──
+(function(){
+  const domain = 'M365CPI91491588.onmicrosoft.com';
+  const pwd    = 'IHHCopilot29Apr';
+  const tbody  = document.getElementById('accounts-body');
+  for(let i=1; i<=25; i++){
+    const user = `user${i}@${domain}`;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><b>Seat ${i}</b></td>
+      <td><code style="font-size:13px">${user}</code></td>
+      <td><code style="font-size:13px">${pwd}</code></td>
+      <td>
+        <button class="copy" onclick="navigator.clipboard.writeText('${user}').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy username',1800)})">Copy username</button>
+      </td>`;
+    tbody.appendChild(tr);
+  }
+})();
 
 // ── Agent card selection ──
 const agentData = {
