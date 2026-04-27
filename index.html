@@ -7,7 +7,7 @@
 <style>
 
 /* THEME */
-:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--ihh:#c41e3a}
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--ihh:#0e7490}
 @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--panel:#0e1633;--panel2:#0a1228;--ink:#e2e8f0;--muted:#94a3b8;--border:#1e2d4a;--sidebar-a:#0e1530;--sidebar-b:#0a0f24;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#172244;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
 @media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#d97706;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
 
@@ -207,8 +207,8 @@ td a:hover{color:var(--accent2)}
 <div class="modulehead"><div class="num">🛠</div><h2>Tools Used Today<small>M365 Copilot surfaces</small></h2></div>
 <div class="card">
 <div class="tools-grid">
-  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher (Critique)</h5><p>Deep research with dual-model architecture — one model generates, another reviews for accuracy. Default "Auto" mode. DRACO benchmark: +13.88% over single-model.</p></div>
-  <div class="tool-card"><div class="icon">⚖️</div><h5>Model Council</h5><p>Submit one prompt to GPT and Claude simultaneously. See responses side-by-side with a summary of where they agree, diverge, and each model's unique insights.</p></div>
+  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher (Critique)</h5><p>The default Researcher mode — keep model selector on <b>Auto</b>. One model researches and drafts; a second reviews source reliability, completeness, and evidence grounding before producing one polished report. Outperforms single-model by +13.88% on the DRACO benchmark.</p></div>
+  <div class="tool-card"><div class="icon">⚖️</div><h5>Model Council</h5><p>Select <b>Model Council</b> in the Researcher model picker. GPT and Claude each run your prompt independently and produce full standalone reports. A third judge model then writes a <b>cover letter</b> — highlighting agreements, divergences, and unique insights from each model.</p></div>
   <div class="tool-card"><div class="icon">📊</div><h5>Excel Copilot</h5><p>Natural-language data analysis, dashboard creation, trend charts, and RAG status tables — no formulas needed.</p></div>
   <div class="tool-card"><div class="icon">📝</div><h5>Word Copilot</h5><p>Document drafting — strategic memos, CR reports, board briefings — grounded on your uploaded data files.</p></div>
   <div class="tool-card"><div class="icon">🎨</div><h5>PowerPoint Copilot</h5><p>Presentation creation and storyline improvement — strategy decks, ESG investor updates, QBR presentations.</p></div>
@@ -299,19 +299,19 @@ td a:hover{color:var(--accent2)}
 <p class="lead">Use Researcher's Critique mode (dual-model: generate + review) for deep competitive intelligence on Malaysia's private healthcare market, then use Model Council to see GPT vs Claude side-by-side.</p>
 
 <div class="activity">
-  <div class="head"><span class="num">Task 1.1</span><span class="time">5 min</span><span class="file">🔍 Researcher · Critique mode</span></div>
+  <div class="head"><span class="num">Task 1.1</span><span class="time">5 min</span><span class="file">🔍 Researcher · Auto (Critique)</span></div>
   <h4>Research Malaysia private healthcare market</h4>
-  <p>In M365 Copilot, open <b>Researcher</b>. Keep the model selector on <b>Auto</b> — this activates Critique mode (dual-model: one generates, one reviews sources and evidence grounding). Use this prompt:</p>
+  <p>In M365 Copilot, open <b>Researcher</b>. Keep the model selector on <b>Auto</b> — this is Critique, the default dual-model mode. One model researches and drafts; a second independently reviews source reliability, completeness, and evidence grounding before the final report is produced. Use this prompt:</p>
   <div class="prompt">Research Malaysia private healthcare market: analyse IHH Healthcare, Columbia Asia, KPJ Healthcare, Sunway Medical. Compare market share, bed capacity, strategic focus, recent M&A activity, digital health initiatives, and medical tourism positioning. Include growth projections for 2026–2028. Cite all sources.<button class="copy" onclick="cp(this)">Copy</button></div>
-  <div class="callout"><b>Watch for:</b> Source Reliability indicators and Evidence Grounding scores — these are the Critique model at work, validating every claim in real time.</div>
+  <div class="callout">The report you receive has already been reviewed and strengthened by a second model. Check the citations — Critique enforces strict evidence grounding, requiring every key claim to be anchored to a reliable, citable source before the final output.</div>
 </div>
 
 <div class="activity">
   <div class="head"><span class="num">Task 1.2</span><span class="time">5 min</span><span class="file">⚖️ Model Council</span></div>
   <h4>Side-by-side: GPT vs Claude on strategic opportunities</h4>
-  <p>In Researcher, switch to <b>Model Council</b> in the model picker. Submit this prompt to see GPT and Claude respond simultaneously:</p>
+  <p>In Researcher, click the model picker and switch to <b>Model Council</b>. Both GPT and Claude will run your prompt at the same time — each producing a complete, standalone report. Use this prompt:</p>
   <div class="prompt">What are the top 3 strategic opportunities for a private hospital group in Malaysia over the next 3 years? Consider: ageing population, medical tourism from Indonesia and the Middle East, digital health penetration, insurance market growth, and the regulatory environment. Provide specific, evidence-based recommendations.<button class="copy" onclick="cp(this)">Copy</button></div>
-  <div class="callout"><b>Read the cover letter</b> — it summarises where GPT and Claude agree, where they diverge, and what unique insight each model contributes. This is Model Council's key output.</div>
+  <div class="callout"><b>Read the <b>cover letter</b></b> — written by a dedicated judge model that compares both reports and highlights where GPT and Claude agree, where they diverge (in framing, magnitude, or interpretation), and the unique insight each model brings. That’s the real value of Council.</div>
 </div>
 
 <div class="activity">
